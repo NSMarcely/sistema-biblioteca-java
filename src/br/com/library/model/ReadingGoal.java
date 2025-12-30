@@ -1,6 +1,6 @@
 package br.com.library.model;
 import java.time.LocalDate;
-
+import br.com.library.exception.InvalidPeriodException;
 public class ReadingGoal {
 	/*Oque vamos ter nas metas:
 	 Objetivo- short, ex:5 livros
@@ -18,7 +18,6 @@ public class ReadingGoal {
 	private String period;
 	private short periodTime;
 	
-	//oque vai ser pedido para criar o objeto readinggoal
 	public ReadingGoal(short objective, String period, short periodTime) {
 		this.objective = objective;
 		this.period = period;
@@ -36,9 +35,8 @@ public class ReadingGoal {
 			return this.endGoal.plusWeeks(this.periodTime);
 		}
 		else {
-			// aqui usamos uma exception pois o java não deixa da print pois colocamso um tipo de retorno 
-			//throw - lançar, usamos para "gritar" que tem um erro
-			throw new IllegalArgumentException("Aqui vai uma exception que vamos criar");
+
+			throw new InvalidPeriodException("Entrada inválida, a entrada deve ser as palavras 'mês' ou 'semana'");
 		}
 	}
 		
