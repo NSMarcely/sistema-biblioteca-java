@@ -9,7 +9,7 @@ public interface Identification {
 		//The interval was defined here
 		long minimum = (long) Math.pow(10, digit - 1);
 		long maximum = (long) Math.powExact(10, digit) - 1;
-		long result = ThreadLocalRandom.current().nextLong(minimum, maximum);
+		long result = ThreadLocalRandom.current().nextLong(minimum, maximum + 1);
 		return String.valueOf(result);
 		//return long.toString(result);
 		

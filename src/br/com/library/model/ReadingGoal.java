@@ -18,6 +18,7 @@ public class ReadingGoal {
 	private String period;
 	private short periodTime;
 	
+	//Here is the constructor 
 	public ReadingGoal(short objective, String period, short periodTime) {
 		this.objective = objective;
 		this.period = period;
@@ -26,13 +27,13 @@ public class ReadingGoal {
 		this.startGoal = LocalDate.now();
 		this.endGoal = deadLine();
 	}
-	
+	//Here is the instance method 
 	public LocalDate deadLine() {
 		if (this.period.matches("(?i)m[êe]s")) {
-			return this.endGoal.plusMonths(this.periodTime);	
+			return this.startGoal.plusMonths(this.periodTime);	
 			}
 		else if(this.period.equalsIgnoreCase("semana")) {
-			return this.endGoal.plusWeeks(this.periodTime);
+			return this.startGoal.plusWeeks(this.periodTime);
 		}
 		else {
 
@@ -40,7 +41,7 @@ public class ReadingGoal {
 		}
 	}
 		
-	
+	//Here are the getters and setters methods 
 	public short getObjective() {
 		return objective;
 	}

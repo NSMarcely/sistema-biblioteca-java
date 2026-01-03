@@ -20,7 +20,7 @@ public class BookLoan {
 		this.user = user;
 		this.borrowedBook = borrowedBook;
 		this.startDate = LocalDate.now();
-		this.endDate = endDate.plusDays(30);
+		this.endDate = startDate.plusDays(30);
 		this.returned = false;
 	}
 	

@@ -1,11 +1,15 @@
 package br.com.library.model;
 
-public abstract class User {
+import br.com.library.model.interfaces.Identification;
+
+public abstract class User implements Identification{
 	private String name;
 	private String id;
-	public User (String name, String id){
+	private String password;
+	public User (String name, String password){
 		this.name = name;
-		this.id = id;
+		this.id = generator((byte)7);
+		this.password = password;
 	}
 	
 	public String getName() {
@@ -13,6 +17,9 @@ public abstract class User {
 	}
 	public String getId() {
 		return this.id;
+	}
+	public String getPassword() {
+		return password;
 	}
 
 }
