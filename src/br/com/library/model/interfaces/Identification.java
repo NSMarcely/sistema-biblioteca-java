@@ -8,10 +8,9 @@ public interface Identification {
 	default String generator(byte digit){
 		//The interval was defined here
 		long minimum = (long) Math.pow(10, digit - 1);
-		long maximum = (long) Math.powExact(10, digit) - 1;
-		long result = ThreadLocalRandom.current().nextLong(minimum, maximum + 1);
-		return String.valueOf(result);
+		long maximum = (long) Math.pow(10, digit) - 1;
+			long result = ThreadLocalRandom.current().nextLong(minimum, maximum + 1);
+			return String.valueOf(result);
 		//return long.toString(result);
-		
 	}
 }

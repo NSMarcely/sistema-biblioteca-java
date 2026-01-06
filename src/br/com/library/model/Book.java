@@ -18,7 +18,7 @@ public class Book implements Identification{
 	}
 	
 	public String  toString() {
-		return String.format("\n:: DADOS ::Nome: %s\nAutor:%s\nPaginas:%d\nISBN:%s\nTipo de livro: %s",
+		return String.format("\n:: DADOS ::\nNome: %s\nAutor:%s\nPaginas:%d\nISBN:%s\nTipo de livro: %s\n",
 				this.bookTitle, this.author, this.page, this.isbn, this.typeBook);
 	}
 
