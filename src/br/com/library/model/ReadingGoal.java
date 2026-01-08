@@ -1,5 +1,7 @@
 package br.com.library.model;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 import br.com.library.exception.InvalidPeriodException;
 public class ReadingGoal {
 	/*Oque vamos ter nas metas:
@@ -41,6 +43,11 @@ public class ReadingGoal {
 		}
 	}
 		
+	public String toString() {
+		LocalDate today = LocalDate.now();
+		long dataMissing = ChronoUnit.DAYS.between(today, this.endGoal);
+		return String.format("\nLivros já lidos: %d | Meta de leitura:%d (faltam %d dias)", this.progress, this.objective, dataMissing);
+	}
 	//Here are the getters and setters methods 
 	public short getObjective() {
 		return objective;

@@ -1,5 +1,4 @@
 package br.com.library.model.interfaces;
-
 import java.util.concurrent.ThreadLocalRandom;
 
 //Les's use default method, because we can apply it only
@@ -13,4 +12,5 @@ public interface Identification {
 			return String.valueOf(result);
 		//return long.toString(result);
 	}
+	
 }

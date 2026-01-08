@@ -1,7 +1,6 @@
 package br.com.library.model;
-import br.com.library.model.interfaces.Identification;
 
-public class Book implements Identification{
+public class Book{
 	private String bookTitle;
 	private String author;
 	private short page;
@@ -12,16 +11,16 @@ public class Book implements Identification{
 		this.bookTitle = bookTitle;
 		this.author = author;
 		this.page = page;
-		//Lest's call our default method, generator.
-		this.isbn = generator((byte)13);
+		this.isbn = null;
 		this.typeBook = typeBook;
 	}
 	
 	public String  toString() {
-		return String.format("\n:: DADOS ::\nNome: %s\nAutor:%s\nPaginas:%d\nISBN:%s\nTipo de livro: %s\n",
+		return String.format("\n-------------------------------------"
+				+ "\nNome: %s\nAutor:%s\nPaginas:%d\nISBN:%s\nTipo de livro: %s"
+				+ "\n-------------------------------------",
 				this.bookTitle, this.author, this.page, this.isbn, this.typeBook);
 	}
-
 	//Here are the getters and setters methods 
 	public String getBookTitle() {
 		return bookTitle;
@@ -37,5 +36,8 @@ public class Book implements Identification{
 	}
 	public String getTypeBook() {
 		return typeBook;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 }

@@ -8,9 +8,4 @@ public class InvalidPeriodException extends RuntimeException{
 		super(message);
 		
 	}
-	public InvalidPeriodException(String msg, Throwable cause){
-        super(msg, cause);
-    }
-	
-
 }
