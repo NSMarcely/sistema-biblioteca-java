@@ -52,6 +52,7 @@ public class RegularUserService implements Identification {
 			if(user.getName().equals(name)) {
 				if(user.getPassword().equals(password)) {
 					System.out.println("\n°Login feito com sucesso!");
+					return;
 				}
 				else {
 					System.out.println("\n°Senha incorreta:(");

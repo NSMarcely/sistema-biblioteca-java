@@ -7,6 +7,7 @@ import br.com.library.model.interfaces.Exists;
 public class BookRepository implements Exists {
 	private final Map<String, Book> books;
     private static BookRepository instance;
+    
     private BookRepository() {
     	this.books = new HashMap<>();
     }
@@ -47,8 +48,4 @@ public class BookRepository implements Exists {
 	    	return this.books.containsKey(isbn);
 	}
 	 
-    public Map<String, Book> getBooks(){
-    	return books;
-    }
-    
 }

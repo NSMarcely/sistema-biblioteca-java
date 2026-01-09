@@ -30,7 +30,7 @@ public class BookService  implements Identification{
 					,objectBook.getBookTitle(), isbn);
 		}
 		else {
-			System.out.printf("Não foi encontrado o livro protador do ISNB: %s",isbn);
+			System.out.printf("\n°Não foi encontrado o livro protador do ISNB: %s",isbn);
 		}
 		
 	}

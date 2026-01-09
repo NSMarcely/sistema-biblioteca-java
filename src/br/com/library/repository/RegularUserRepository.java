@@ -48,10 +48,5 @@ public class RegularUserRepository implements Exists{
 		return readers.containsKey(id);
 	}
 
-	
-	public Map<String, RegularUser> getReaders() {
-		return readers;
-	}
-	
-	
+
 }
