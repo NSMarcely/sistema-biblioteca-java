@@ -1,10 +1,10 @@
 package br.com.library.repository;
 import java.util.HashMap;
 import java.util.Map;
-
 import br.com.library.model.Loan;
+import br.com.library.model.interfaces.Exists;
 
-public class LoanRepository {
+public class LoanRepository implements Exists{
 	private static LoanRepository instance;
 	private final Map<String, Loan> loans;
 	
@@ -24,7 +24,20 @@ public class LoanRepository {
 	}
 	
 	public void addLoan (Loan loan) {
-		this.loans.put(loan.getBorrowedBook().getBookTitle(), loan);
+		this.loans.put(loan.getBorrowedBook().getIsbn(), loan);
 	}
+	
+	public Loan returnLoan(String borrowedBook) {
+		return this.loans.get(borrowedBook);
+		
+	}
+	public void remove (String borrowedBook) {
+		this.loans.remove(borrowedBook);
+	}
+	
+	@Override
+	public boolean existence(String borowedBook) {
+		return this.loans.containsKey(borowedBook);
+		}
 	
 }
