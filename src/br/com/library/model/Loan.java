@@ -1,5 +1,6 @@
 package br.com.library.model;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class Loan {
@@ -28,6 +29,23 @@ public class Loan {
 		return returned;
 	}
 	
+	public String getReturnedStatus() {
+		String description = this.returned ? "Devolvido" : "Pendente";
+		return description;
+	}
+	
+	public String toString () {
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return String.format("\n-----------------------------------------------"
+				+ "\nID do usuário:%s"
+				+ "\nLivro:%s"
+				+ "\nEmpréstimo realizado em:%s"
+				+ "\nData da devolução:%s"
+				+ "\nStatus de devolução:%s"
+				+ "\n-----------------------------------------------",
+				this.id.getId(), this.borrowedBook.toString(), 
+				startDate.format(dateFormat), endDate.format(dateFormat), getReturnedStatus()) ;
+	}
 	
 	public User getId() {
 		return id;
@@ -44,5 +62,7 @@ public class Loan {
 	public boolean isReturned() {
 		return returned;
 	}
+ 
 	
+
 }

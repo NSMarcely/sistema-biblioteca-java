@@ -22,6 +22,7 @@ public class Book{
 		String description = this.available ? "Disponível" : "Indisponível";
 		return description;
 	}
+	
 	public String  toString() {
 		return String.format("\n-------------------------------------"
 				+ "\nNome: %s\navailable:%s\nAutor:%s\nPaginas:%d\nISBN:%s\nTipo de livro: %s"

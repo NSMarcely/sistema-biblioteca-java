@@ -20,7 +20,7 @@ public class LoanService {
 					RegularUser user = this.regularUserRepository.returnRegularUser(id);
 					Loan loan = new Loan(user, book);
 					this.loanRepository.addLoan(loan);
-				}
+					user.addReadingBooks(book);				}
 				else {
 					System.out.println("°O usuário não foi encontrado");
 				}
@@ -31,6 +31,22 @@ public class LoanService {
 		}
 		else {
 			System.out.println("°Livro não encontrado");
+		}
+	}
+	
+	public void finishLoan (String isbn, String id) {
+		if(this.loanRepository.existence(isbn)) {
+			if(this.regularUserRepository.existence(id)) {
+				Loan loan = this.loanRepository.returnLoan(id);
+				loan.updatesLoan();
+				this.loanRepository.remove(isbn);
+			}
+			else {
+				System.out.println("O usuário não foi encontrado");
+			}
+		}
+		else {
+			System.out.println("O ISBN não foi localizado");
 		}
 	}
 }

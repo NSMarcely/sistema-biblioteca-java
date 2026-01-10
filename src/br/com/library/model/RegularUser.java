@@ -21,6 +21,14 @@ public class RegularUser extends User {
 				,this.getName(), this.getId(), this.debt, this.goal);
 	}
 	
+	public void addReadingBooks (Book book) {
+		this.readingBooks.put(book.getIsbn(), book);
+	}
+	
+	public void removeReadingBooks (String isbn) {
+		this.readingBooks.remove(isbn);
+	}
+	
 	public ReadingGoal getGoal() {
 		return goal;
 	}
