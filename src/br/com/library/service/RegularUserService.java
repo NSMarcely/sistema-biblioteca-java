@@ -1,5 +1,5 @@
 package br.com.library.service;
-import br.com.library.app.MenuRegularUser;
+import br.com.library.app.RegularUserMenu;
 import br.com.library.model.ReadingGoal;
 import br.com.library.model.RegularUser;
 import br.com.library.model.interfaces.Identification;
@@ -53,8 +53,8 @@ public class RegularUserService implements Identification {
 			if(user.getName().equals(name)) {
 				if(user.getPassword().equals(password)) {
 					System.out.println("\n°Login feito com sucesso!");
-					MenuRegularUser menuRegularUser = new MenuRegularUser();
-					menuRegularUser.menuUser(user.getId());
+					RegularUserMenu regularUserMenu = new RegularUserMenu();
+					regularUserMenu.userMenu(user.getId(), user.getName());
 					return;
 					
 					
