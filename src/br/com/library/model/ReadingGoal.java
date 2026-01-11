@@ -42,7 +42,11 @@ public class ReadingGoal {
 			throw new InvalidPeriodException("Entrada inválida, a entrada deve ser as palavras 'mês' ou 'semana'");
 		}
 	}
+	
+	public void checkProgress () {
 		
+	}
+	
 	public String toString() {
 		LocalDate today = LocalDate.now();
 		long dataMissing = ChronoUnit.DAYS.between(today, this.endGoal);

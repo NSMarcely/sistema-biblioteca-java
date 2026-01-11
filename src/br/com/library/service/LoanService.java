@@ -20,7 +20,7 @@ public class LoanService {
 					RegularUser user = this.regularUserRepository.returnRegularUser(id);
 					Loan loan = new Loan(user, book);
 					this.loanRepository.addLoan(loan);
-					user.addReadingBooks(book);				}
+					user.addReadingBooks(loan);				}
 				else {
 					System.out.println("°O usuário não foi encontrado");
 				}
