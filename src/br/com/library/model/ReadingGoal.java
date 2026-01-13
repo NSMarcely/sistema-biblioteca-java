@@ -43,9 +43,7 @@ public class ReadingGoal {
 		}
 	}
 	
-	public void checkProgress () {
-		
-	}
+	
 	
 	public String toString() {
 		LocalDate today = LocalDate.now();

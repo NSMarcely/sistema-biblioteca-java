@@ -37,6 +37,7 @@ public class RegularUser extends User {
 	public ReadingGoal getGoal() {
 		return goal;
 	}
+	
 	public float getDebt() {
 		return debt;
 	}
