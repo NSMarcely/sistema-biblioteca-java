@@ -2,8 +2,6 @@ package br.com.library.repository;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
-import br.com.library.model.ReadingGoal;
 import br.com.library.model.RegularUser;
 import br.com.library.model.interfaces.Exists;
 
@@ -30,11 +28,7 @@ public class RegularUserRepository implements Exists{
 		this.readers.put(user.getId(), user);
 	}
 	
-	public void addGoal(ReadingGoal goal, String userId) {
-		
-		
-	}
-	
+
 	public RegularUser returnRegularUser(String id) {
 		return this.readers.get(id);
 	}

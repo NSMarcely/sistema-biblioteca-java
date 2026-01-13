@@ -1,4 +1,6 @@
 package br.com.library.model;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +12,7 @@ public class RegularUser extends User {
 	public RegularUser(String name, String password) {
 		super(name, password);
 		this.readingBooks = new HashMap<>(); 
-		this.debt = 0 ;
+		this.debt = sumDebt();
 		this.goal = null;	
 	}
 	@Override
@@ -30,14 +32,28 @@ public class RegularUser extends User {
 		return this.readingBooks.values();
 		
 	}
+	
 	public void removeReadingBooks (String isbn) {
 		this.readingBooks.remove(isbn);
 	}
 	
+	public float sumDebt () {
+		float debt = 0;
+		float fine = 0.75f;
+    	for(Loan loan : allReturnReadingBooks()) {
+    		LocalDate endDate = loan.getEndDate();    	
+    		LocalDate nowDate = LocalDate.now();
+    		long daysLater = ChronoUnit.DAYS.between(endDate, nowDate);
+    		if(daysLater > 0) {
+    			debt += daysLater * fine;
+    		}
+    	}
+    	return debt;
+    }
+	
 	public ReadingGoal getGoal() {
 		return goal;
 	}
-	
 	public float getDebt() {
 		return debt;
 	}

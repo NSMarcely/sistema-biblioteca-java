@@ -43,13 +43,12 @@ public class ReadingGoal {
 		}
 	}
 	
-	
-	
 	public String toString() {
 		LocalDate today = LocalDate.now();
 		long dataMissing = ChronoUnit.DAYS.between(today, this.endGoal);
 		return String.format("\nLivros já lidos: %d | Meta de leitura:%d (faltam %d dias)", this.progress, this.objective, dataMissing);
 	}
+	
 	//Here are the getters and setters methods 
 	public short getObjective() {
 		return objective;

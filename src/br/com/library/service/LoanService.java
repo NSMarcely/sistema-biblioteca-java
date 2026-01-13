@@ -1,4 +1,8 @@
 package br.com.library.service;
+import java.time.LocalDate;
+import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
+
 import br.com.library.model.Book;
 import br.com.library.model.Loan;
 import br.com.library.model.RegularUser;
@@ -35,20 +39,38 @@ public class LoanService {
 	}
 	
 	public void finishLoan (String isbn, String id) {
-		if(this.loanRepository.existence(isbn)) {
+		Loan loan = loanRepository.returnLoan(isbn);
+		if(loan != null) {
 			if(this.regularUserRepository.existence(id)) {
-				Loan loan = this.loanRepository.returnLoan(id);
-				loan.updatesLoan();
-				this.loanRepository.remove(isbn);
+				if(loan.getId().getId().equals(id)) {
+					loan.updatesLoan();
+					this.loanRepository.remove(isbn);
+					this.updateGoal(id);
+				}
+				else {
+					System.out.printf("O livro não foi emprestado para o usuário '%s'", loan.getId().getName());
+				}
 			}
 			else {
-				System.out.println("O usuário não foi encontrado");
+				System.out.println("°O usuário não foi encontrado");
 			}
 		}
 		else {
-			System.out.println("O ISBN não foi localizado");
+			System.out.println("°O ISBN não foi localizado");
 		}
 	}
 	
+    public void updateGoal (String id) {
+    	RegularUser user = this.regularUserRepository.returnRegularUser(id);
+    	if(user.getGoal() == null) {
+    		return;
+    	}
+    	long readingBooks = user.allReturnReadingBooks().stream()
+    			.filter(loan -> loan.isReturned() )
+    			.filter(loan -> !loan.getStartDate().isBefore(user.getGoal().getStartGoal()) )
+    	        .count();
+    	user.getGoal().setProgress((short) readingBooks);
+    	System.out.printf("As metas do usuário '%s' foi atualiza! ", user.getName());
+    }
     
 }
