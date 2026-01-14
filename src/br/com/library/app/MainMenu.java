@@ -8,15 +8,18 @@ public class MainMenu {
 	public void app() {
 		boolean finish = false;
 		while(!finish) {
+			System.out.println("::Biblioteca::");
 			System.out.println("\n|1-Cadastrar-se"
-					+ "\n2-Logar"
-					+ "\nSair do sistema"
+					+ "\n|2-Logar"
+					+ "\n|Sair do sistema"
 					+ "\n°Escolha uma opção:");
 			int option = userInput.nextInt();
 			userInput.nextLine();
 			switch(option) {
 				case 1 :
+					System.out.println("Nome:");
 					String name = userInput.nextLine();
+					System.out.println("Senha:");
 					String password = userInput.nextLine();
 					regularUserService.registerRegularUser(name, password);
 					break;
@@ -24,22 +27,28 @@ public class MainMenu {
 					boolean finish2 = false;
 					while(!finish2) {
 						System.out.println("\nLogar como:"
-								+ "\n1-Leitor"
-								+ "\n2-Adminstrador"
+								+ "\n|1-Leitor"
+								+ "\n|2-Adminstrador"
+								+ "\n|3-Voltar"
 								+ "\n°Escolha uma opção:");
 						int option2 = userInput.nextInt();
 						userInput.nextLine();
 						switch(option2) {
 						case 1 : 
+							System.out.println("Nome:");
 							String nameUser = userInput.nextLine();
+							System.out.println("Senha:");
 							String passwordUser = userInput.nextLine();
 							regularUserService.loginRegularUser(nameUser, passwordUser);
 							break;
 						case 2 :
-							System.out.println("Ainda em desenvolvimento");
+							System.out.println("°Ainda em desenvolvimento");
+							break;
+						case 3:
+							finish2 = true;
 							break;
 						default:
-							System.out.println("Opção inválida");
+							System.out.println("°Opção inválida");
 						}
 					}
 					break;
@@ -52,6 +61,10 @@ public class MainMenu {
 			}
 		}
 		
+	}
+	public static void main(String[] args) {
+		MainMenu menu = new MainMenu();
+		menu.app();
 	}
 
 }

@@ -9,7 +9,9 @@ public class RegularUserMenu {
 	 public void userMenu (String userId, String userName) {
 		 boolean finish = false;
 			while(!finish) {
+				System.out.println("\n::BIBLIOFIL::\n");
 				regularUserService.viewProfile(userId);
+				
 				System.out.println("\n|1-Adicionar metas"
 						+ "\n|2-Deslogar"
 						+ "\n°Escolha uma opção:");

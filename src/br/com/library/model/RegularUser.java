@@ -17,10 +17,12 @@ public class RegularUser extends User {
 	}
 	@Override
 	public String toString() {
-		return String.format("\nNome:%s"
+		return String.format("___________________________________"
+				+ "\nNome:%s"
 				+ "\nID:%s"
 				+ "\nDebito:R$ %.2f"
 				+ "\nSuas metas:%s"
+				+ "\n___________________________________"
 				,this.getName(), this.getId(), this.debt, this.goal);
 	}
 	

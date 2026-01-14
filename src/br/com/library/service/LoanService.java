@@ -1,8 +1,4 @@
 package br.com.library.service;
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
-import java.time.temporal.ChronoUnit;
-
 import br.com.library.model.Book;
 import br.com.library.model.Loan;
 import br.com.library.model.RegularUser;

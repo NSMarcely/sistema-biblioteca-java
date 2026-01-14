@@ -49,14 +49,18 @@ public class RegularUserService implements Identification {
 	}
 	
 	public void loginRegularUser (String name, String password) {
+		if(this.readre.retunrAllRegularUser().isEmpty()) {
+			System.out.println("\n°Nenhum usário cadrastado");
+			return;
+		}
 		for(RegularUser user : this.readre.retunrAllRegularUser()) {
 			if(user.getName().equals(name)) {
 				if(user.getPassword().equals(password)) {
 					System.out.println("\n°Login feito com sucesso!");
+					System.out.println("\nBem-vido(a) ao seu bibliofil, " + user.getName());
 					RegularUserMenu regularUserMenu = new RegularUserMenu();
 					regularUserMenu.userMenu(user.getId(), user.getName());
 					return;
-					
 					
 				}
 				else {
