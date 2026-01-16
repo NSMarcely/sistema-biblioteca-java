@@ -39,7 +39,7 @@ public class MainMenu {
 							String nameUser = userInput.nextLine();
 							System.out.println("Senha:");
 							String passwordUser = userInput.nextLine();
-							regularUserService.loginRegularUser(nameUser, passwordUser);
+							regularUserService.login(nameUser, passwordUser);
 							break;
 						case 2 :
 							System.out.println("°Ainda em desenvolvimento");

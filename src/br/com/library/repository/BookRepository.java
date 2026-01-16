@@ -33,9 +33,10 @@ public class BookRepository implements Exists {
 	}
 	
 	public void printBooks() {
-		System.out.println("\n:: Listas de livros ::");
+		System.out.println(":: Listas de livros ::");
+		int accountant = 0;
 		for(Book b: books.values()) {
-			System.out.println(b);
+			System.out.println(accountant + "-" + b);
 		}
 	}
 

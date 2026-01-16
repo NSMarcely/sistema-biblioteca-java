@@ -2,15 +2,16 @@ package br.com.library.service;
 import br.com.library.app.RegularUserMenu;
 import br.com.library.model.ReadingGoal;
 import br.com.library.model.RegularUser;
+import br.com.library.model.interfaces.Authenticatable;
 import br.com.library.model.interfaces.Identification;
 import br.com.library.repository.RegularUserRepository;
 
-public class RegularUserService implements Identification {
+public class RegularUserService implements Identification, Authenticatable {
 	private RegularUserRepository readre = RegularUserRepository.getInstance();
 	
 	public void registerRegularUser (String name, String password) {
 		RegularUser newUser = new RegularUser(name,password);
-		if(this.readre.existence(newUser.getId()) || newUser.getId() == null){
+		if(this.readre.existence(newUser.getId()) || newUser.getId() ==  null){
 			boolean sucess = false;
 			while(!sucess) {
 				String newId = generator((byte)7);
@@ -47,8 +48,8 @@ public class RegularUserService implements Identification {
 			System.out.println("\n°Usuário não indentificado");
 		}
 	}
-	
-	public void loginRegularUser (String name, String password) {
+	@Override
+	public void login (String name, String password) {
 		if(this.readre.retunrAllRegularUser().isEmpty()) {
 			System.out.println("\n°Nenhum usário cadrastado");
 			return;

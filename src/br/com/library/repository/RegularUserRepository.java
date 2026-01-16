@@ -39,8 +39,17 @@ public class RegularUserRepository implements Exists{
 	
 	@Override 
 	public boolean existence(String id) {
-		return readers.containsKey(id);
+		return this.readers.containsKey(id);
 	}
+	
+    public void printRegularUser() {
+    	System.out.println(":: Lista de Leitores ::");
+    	int accountant = 0;
+    	for(RegularUser i : retunrAllRegularUser()) {
+    		System.out.println(accountant + "-" + i);
+    		accountant ++;
+    	}
+    }
 
 
 }
