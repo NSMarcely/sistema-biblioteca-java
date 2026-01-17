@@ -1,25 +1,37 @@
 package br.com.library.service;
+import java.util.Objects;
+
+import br.com.library.app.AdminMenu;
 import br.com.library.model.Admin;
+import br.com.library.model.interfaces.Authenticatable;
 import br.com.library.model.interfaces.Identification;
 import br.com.library.repository.AdminRepository;
 
-public class AdminService implements Identification {
+public class AdminService implements Identification, Authenticatable {
 	AdminRepository adminRepository = AdminRepository.getInstance();
 	
 	public void registerAdmin (String name, String password) {
-		Admin newAdmin = new Admin(name, password);
-		boolean sucess = false;
-		while(!sucess){
-			if(this.adminRepository.existence(newAdmin.getId()) || newAdmin.getId() == null) {
-				String newid = generator((byte)8);
-				newAdmin.setId(newid);
-			}
-			else {
-				sucess = true;
-			}
+		String newId;
+		do {
+			newId = generator((byte)8);
 		}
-	this.adminRepository.addAdmin(newAdmin);
-	System.out.println("O Administrador foi adicionado com sucesso!");
-		
+		while(this.adminRepository.existence(newId) || newId == null);
+		Admin newAdmin = new Admin(name, password);
+		newAdmin.setId(newId);
+		this.adminRepository.addAdmin(newAdmin);
+		System.out.println("O Administrador foi adicionado com sucesso!");
 	}
+	
+	@Override
+	public void login(String name, String password) {
+		AdminMenu menu = new AdminMenu();
+		adminRepository.returnAllAdmin().stream()
+				.filter(admin -> Objects.equals(admin.getName(), name) && Objects.equals(admin.getPassword(), password))
+				.findFirst()
+				.ifPresentOrElse(admin -> {System.out.println("°Login feito com sucesso\n Bem-vindo(a)," + admin.getName() + "!");
+					menu.adminMenu();
+				},
+				() -> System.out.println("Usuário ou senha incorreta, tente novamente!"));
+	}
+	
 }

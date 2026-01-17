@@ -1,9 +1,12 @@
 package br.com.library.app;
 import java.util.Scanner;
+
+import br.com.library.service.AdminService;
 import br.com.library.service.RegularUserService;
 
 public class MainMenu {
 	private RegularUserService regularUserService = new RegularUserService();
+	private AdminService adminService = new AdminService();
 	private Scanner userInput = new Scanner(System.in);
 	public void app() {
 		boolean finish = false;
@@ -35,18 +38,27 @@ public class MainMenu {
 						userInput.nextLine();
 						switch(option2) {
 						case 1 : 
+							System.err.println("<Logar usuário>");
 							System.out.println("Nome:");
-							String nameUser = userInput.nextLine();
+							String userName = userInput.nextLine();
 							System.out.println("Senha:");
-							String passwordUser = userInput.nextLine();
-							regularUserService.login(nameUser, passwordUser);
+							String userPassword = userInput.nextLine();
+							regularUserService.login(userName, userPassword);
 							break;
+							
 						case 2 :
-							System.out.println("°Ainda em desenvolvimento");
+							System.out.println("<Logar Administrador>");
+							System.out.println("Nome:");
+							String adminName = userInput.nextLine();
+							System.out.println("Senha:");
+							String adminPassword = userInput.nextLine();
+							adminService.login(adminName, adminPassword);
 							break;
+							
 						case 3:
 							finish2 = true;
 							break;
+							
 						default:
 							System.out.println("°Opção inválida");
 						}
