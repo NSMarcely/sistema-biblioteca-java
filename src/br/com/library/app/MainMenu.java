@@ -2,17 +2,20 @@ package br.com.library.app;
 import java.util.Scanner;
 
 import br.com.library.service.AdminService;
+import br.com.library.service.BookService;
 import br.com.library.service.RegularUserService;
 
 public class MainMenu {
 	private RegularUserService regularUserService = new RegularUserService();
 	private AdminService adminService = new AdminService();
+	private BookService bookService = new BookService();
 	private Scanner userInput = new Scanner(System.in);
 	public void app() {
+		bookService.load();
 		boolean finish = false;
 		while(!finish) {
 			System.out.println("::Biblioteca::");
-			System.out.println("\n|1-Cadastrar-se"
+			System.out.println("\n|1-Cadastrar-se"		
 					+ "\n|2-Logar"
 					+ "\n|Sair do sistema"
 					+ "\n°Escolha uma opção:");
@@ -79,4 +82,5 @@ public class MainMenu {
 		menu.app();
 	}
 
-}
+}//O Pequeno Principe;Antoine de Saint-Exupery;96;9788520936412;Infantil;true
+//"Master Administrator", "Pi314159Pi"

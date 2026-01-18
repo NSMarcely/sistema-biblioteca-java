@@ -18,7 +18,8 @@ public class BookService  implements Identification{
 				}
 			}
 		}
-		this.bookRepository.addBook(newBook);
+		this.bookRepository.addBook(newBook); 
+		this.bookRepository.write();
 	    System.out.printf("\n°O livro foi registrado com sucesso!\n%s", newBook.toString());
 	}
 	
@@ -28,10 +29,18 @@ public class BookService  implements Identification{
 			Book objectBook = this.bookRepository.returnBook(isbn);
 			System.out.printf("\n°O livro %s portador do ISBN: %s foi apagado com sucesso!"
 					,objectBook.getBookTitle(), isbn);
+			this.bookRepository.write();
 		}
 		else {
 			System.out.printf("\n°Não foi encontrado o livro protador do ISNB: %s",isbn);
 		}
 		
 	}
+	 public void load() {
+		 this.bookRepository.read();
+		 this.bookRepository.printBooks();
+	 }
+	 
+	 
+	
 }
