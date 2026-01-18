@@ -12,10 +12,11 @@ public class MainMenu {
 	private Scanner userInput = new Scanner(System.in);
 	public void app() {
 		bookService.load();
+		adminService.load();
 		boolean finish = false;
 		while(!finish) {
 			System.out.println("::Biblioteca::");
-			System.out.println("\n|1-Cadastrar-se"		
+			System.out.println("\n|1-Cadastrar-se"		 
 					+ "\n|2-Logar"
 					+ "\n|Sair do sistema"
 					+ "\n°Escolha uma opção:");
@@ -82,5 +83,4 @@ public class MainMenu {
 		menu.app();
 	}
 
-}//O Pequeno Principe;Antoine de Saint-Exupery;96;9788520936412;Infantil;true
-//"Master Administrator", "Pi314159Pi"
+}

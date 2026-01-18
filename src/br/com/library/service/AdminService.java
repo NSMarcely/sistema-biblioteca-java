@@ -19,7 +19,9 @@ public class AdminService implements Identification, Authenticatable {
 		Admin newAdmin = new Admin(name, password);
 		newAdmin.setId(newId);
 		this.adminRepository.addAdmin(newAdmin);
+		this.adminRepository.write();
 		System.out.println("O Administrador foi adicionado com sucesso!");
+	
 	}
 	
 	@Override
@@ -32,6 +34,11 @@ public class AdminService implements Identification, Authenticatable {
 					menu.adminMenu();
 				},
 				() -> System.out.println("Usuário ou senha incorreta, tente novamente!"));
+	}
+	
+	public void load () {
+		this.adminRepository.read();
+		this.adminRepository.printAdm();
 	}
 	
 }

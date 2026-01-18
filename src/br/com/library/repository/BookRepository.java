@@ -56,8 +56,9 @@ public class BookRepository implements Exists {
     	}
     }
     
+    
     public void write() {
-    	try(BufferedWriter bw = new BufferedWriter(new FileWriter(booksFile))){
+    	try(BufferedWriter bw = new BufferedWriter(new FileWriter(this.booksFile))){
     		for(Book i : this.books.values()) {
     			bw.write(i.getBookTitle() + ";" + 
                         i.getAuthor() + ";" + 

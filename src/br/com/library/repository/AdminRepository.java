@@ -1,13 +1,21 @@
 package br.com.library.repository;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 import br.com.library.model.Admin;
+import br.com.library.model.Book;
 import br.com.library.model.interfaces.Exists;
 
 
 public class AdminRepository implements Exists  {
+	private final String Adminfile = "admin.txt";
 	private final Map<String, Admin> admins;
 	private static AdminRepository instance;
 	
@@ -28,6 +36,38 @@ public class AdminRepository implements Exists  {
 			
 		}
 		return instance;
+	}
+
+	public void read () {
+		File file = new File(this.Adminfile);
+		if(!file.exists()) return;
+		try(BufferedReader br = new BufferedReader(new FileReader(file))){
+			String line;	
+			while((line = br.readLine()) != null) {
+				String[] parts = line.split(";");
+				String name = parts[0];
+				String password = parts[1];
+				String id = parts[2];
+				Admin admin = new Admin(name, password);
+				admin.setId(id);
+				this.admins.put(id, admin);
+			}
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void write() {
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(this.Adminfile))){
+			for(Admin i : this.admins.values()) {
+				bw.write(i.getName() + ";" + i.getId());
+			}
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public Collection<Admin > returnAllAdmin( ) {

@@ -16,7 +16,6 @@ public class AdminMenu {
 			System.out.println(":: ADMINSTRADOR ::");
 			System.out.println("\n1-Adicionar Livro\n2-Remover livro"
 					+ "\n3-Registrar Administradores\n4-Registrar Empréstimo"
-	
 					+ "\n5-Registrar Devolução\n6-Sair"
 					+ "\n°Opção:");
 			int option = userInput.nextInt();

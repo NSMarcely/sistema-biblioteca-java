@@ -38,7 +38,6 @@ public class BookService  implements Identification{
 	}
 	 public void load() {
 		 this.bookRepository.read();
-		 this.bookRepository.printBooks();
 	 }
 	 
 	 
