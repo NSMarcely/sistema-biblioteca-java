@@ -15,6 +15,7 @@ public class RegularUser extends User {
 		this.debt = sumDebt();
 		this.goal = null;	
 	}
+	
 	@Override
 	public String toString() {
 		return String.format("___________________________________"
@@ -62,6 +63,7 @@ public class RegularUser extends User {
 	public Map<String, Loan> getReadingBooks() {
 		return readingBooks;
 	}
+	
 	public void setDebt(float debt) {
 		this.debt = debt;
 	}

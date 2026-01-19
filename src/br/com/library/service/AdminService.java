@@ -38,7 +38,6 @@ public class AdminService implements Identification, Authenticatable {
 	
 	public void load () {
 		this.adminRepository.read();
-		this.adminRepository.printAdm();
 	}
 	
 }

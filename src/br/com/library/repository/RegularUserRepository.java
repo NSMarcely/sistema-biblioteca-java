@@ -27,7 +27,6 @@ public class RegularUserRepository implements Exists{
 	public void addRegularUser(RegularUser user) {
 		this.readers.put(user.getId(), user);
 	}
-	
 
 	public RegularUser returnRegularUser(String id) {
 		return this.readers.get(id);
@@ -35,7 +34,7 @@ public class RegularUserRepository implements Exists{
 	
 	public Collection<RegularUser> retunrAllRegularUser(){
 		return this.readers.values();
-		}
+	}	
 	
 	@Override 
 	public boolean existence(String id) {

@@ -66,6 +66,7 @@ public class BookRepository implements Exists {
                         i.getIsbn() + ";" + 
                         i.getTypeBook() + ";" + 
                         i.isAvailable());
+    			bw.newLine();
     		}
     	}
     	catch(IOException e){

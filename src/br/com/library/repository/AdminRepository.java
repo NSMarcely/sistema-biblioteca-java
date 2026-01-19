@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
 import br.com.library.model.Admin;
-import br.com.library.model.Book;
 import br.com.library.model.interfaces.Exists;
 
 
@@ -63,6 +61,7 @@ public class AdminRepository implements Exists  {
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(this.Adminfile))){
 			for(Admin i : this.admins.values()) {
 				bw.write(i.getName() + ";" + i.getId());
+				bw.newLine();
 			}
 		}
 		catch(IOException e) {

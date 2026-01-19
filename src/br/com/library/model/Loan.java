@@ -10,23 +10,18 @@ public class Loan {
 	//LocalDate startDate/ in "this.startDate" = startDate.now();
 	//LocalDate endDate/ in this.endDate = endDate.plusDay(30)
 	//boolean returned */
-	private User id;
+	private RegularUser id;
 	private Book borrowedBook;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	private boolean returned;
 	
-	public Loan(User id,Book borrowedBook) {
+	public Loan(RegularUser id,Book borrowedBook) {
 		this.id = id;
 		this.borrowedBook = borrowedBook;
 		this.startDate = LocalDate.now();
 		this.endDate = startDate.plusDays(30);
 		this.returned = false;
-	}
-	
-	public boolean updatesLoan() {
-		returned = true;
-		return returned;
 	}
 	
 	public String getReturnedStatus() {
@@ -62,6 +57,20 @@ public class Loan {
 	public boolean isReturned() {
 		return returned;
 	}
+
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
+	}
+
+	public void setEndDate(LocalDate endDate) {
+		this.endDate = endDate;
+	}
+
+	public void setReturned(boolean returned) {
+		this.returned = returned;
+	}
+	
+
  
 	
 
