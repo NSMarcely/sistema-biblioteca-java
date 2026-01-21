@@ -29,6 +29,7 @@ public class ReadingGoal {
 		this.startGoal = LocalDate.now();
 		this.endGoal = deadLine();
 	}
+	
 	//Here is the instance method 
 	public LocalDate deadLine() {
 		if (this.period.matches("(?i)m[êe]s")) {
@@ -65,7 +66,17 @@ public class ReadingGoal {
 	public String getPeriod() {
 		return period;
 	}
+	public short getPeriodTime() {
+		return periodTime;
+	}
 	public void setProgress(short progress) {
 		this.progress = progress;
 	}
+	public void setStartGoal(LocalDate startGoal) {
+		this.startGoal = startGoal;
+	}
+	public void setEndGoal(LocalDate endGoal) {
+			this.endGoal = endGoal;
+	}
+	
 }

@@ -3,19 +3,23 @@ import java.util.Scanner;
 
 import br.com.library.service.AdminService;
 import br.com.library.service.BookService;
+import br.com.library.service.LoanService;
 import br.com.library.service.RegularUserService;
 
 public class MainMenu {
 	private RegularUserService regularUserService = new RegularUserService();
 	private AdminService adminService = new AdminService();
 	private BookService bookService = new BookService();
+	private LoanService loanService = new LoanService();
 	private Scanner userInput = new Scanner(System.in);
 	public void app() {
-		bookService.load();
-		adminService.load();
+		this.bookService.load();
+		this.adminService.load();
+		this.loanService.load();
+		this.regularUserService.load();
 		boolean finish = false;
 		while(!finish) {
-			System.out.println("::Biblioteca::");
+			System.out.println("\n::Biblioteca::");
 			System.out.println("\n|1-Cadastrar-se"		 
 					+ "\n|2-Logar"
 					+ "\n|Sair do sistema"

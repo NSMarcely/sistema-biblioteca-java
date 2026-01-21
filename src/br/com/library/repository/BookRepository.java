@@ -7,11 +7,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import br.com.library.model.Book;
 import br.com.library.model.interfaces.Exists;
+import br.com.library.model.interfaces.Repository;
 //Here we will  apply the Singleton Pattern
-public class BookRepository implements Exists {
+public class BookRepository implements Exists, Repository {
 	private final String booksFile = "book.txt";
 	private final Map<String, Book> books;
     private static BookRepository instance;
@@ -31,6 +31,7 @@ public class BookRepository implements Exists {
     	return instance;
     }
     
+    @Override
     public void read () {
     	File file = new File(this.booksFile);
     	if(!file.exists()) return;
@@ -56,9 +57,10 @@ public class BookRepository implements Exists {
     	}
     }
     
-    
-    public void write() {
-    	try(BufferedWriter bw = new BufferedWriter(new FileWriter(this.booksFile))){
+    @Override
+    public void write () {
+    	File file = new File(this.booksFile);
+    	try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
     		for(Book i : this.books.values()) {
     			bw.write(i.getBookTitle() + ";" + 
                         i.getAuthor() + ";" + 

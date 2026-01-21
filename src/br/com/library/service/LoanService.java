@@ -21,7 +21,9 @@ public class LoanService {
 					Loan loan = new Loan(user, book);
 					this.loanRepository.addLoan(loan);
 					book.setAvailable(false);
-					user.addReadingBooks(loan);				}
+					user.addReadingBooks(loan);		
+					this.loanRepository.write();;
+					}
 				else {
 					System.out.println("°O usuário não foi encontrado");
 				}
@@ -44,6 +46,7 @@ public class LoanService {
 					book.setAvailable(true);
 					loan.setReturned(true);
 					this.updateGoal(id);
+					this.loanRepository.write();
 				}
 				else {
 					System.out.printf("O livro não foi emprestado para o usuário '%s'", loan.getId().getName());
@@ -69,6 +72,10 @@ public class LoanService {
     	        .count();
     	user.getGoal().setProgress((short) readingBooks);
     	System.out.printf("As metas do usuário '%s' foi atualiza! ", user.getName());
+    }
+    
+    public void load () {
+    	this.bookRepository.read();
     }
     
 }

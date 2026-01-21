@@ -12,8 +12,9 @@ import br.com.library.model.Book;
 import br.com.library.model.Loan;
 import br.com.library.model.RegularUser;
 import br.com.library.model.interfaces.Exists;
+import br.com.library.model.interfaces.Repository;
 
-public class LoanRepository implements Exists{
+public class LoanRepository implements Exists, Repository{
 	private String loansFile = "loan.txt";
 	private static LoanRepository instance;
 	private final Map<String, Loan> loans;
@@ -45,6 +46,7 @@ public class LoanRepository implements Exists{
 		this.loans.remove(borrowedBook);
 	}
 	
+	@Override
 	public void read () {
 		File file = new File(this.loansFile);
 		if(!file.exists()) return;
@@ -73,7 +75,8 @@ public class LoanRepository implements Exists{
 			e.printStackTrace();
 		}
 	}
-	
+
+	@Override
 	public void write () {
 		File file = new File(this.loansFile);
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){

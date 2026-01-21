@@ -23,6 +23,7 @@ public class RegularUserService implements Identification, Authenticatable {
 		}
 		this.readre.addRegularUser(newUser);
 		System.out.printf("\n°Cadastro concluído com sucesso!\n°ID gerado:%s",newUser.getId());
+		this.readre.write();
 	}
 
 	public void increaseGoal (short objective, String period, short periodTime, String userId) {
@@ -32,6 +33,7 @@ public class RegularUserService implements Identification, Authenticatable {
 			if(user.getGoal() == null) {
 				user.setGoal(newGoal);
 				System.out.println("\n°Meta adiciona com sucesso!");
+				this.readre.write();
 			}
 		}
 		else {
@@ -74,5 +76,8 @@ public class RegularUserService implements Identification, Authenticatable {
 		}
 	}
 	 
-	
+	public void load() {
+    	this.readre.read();
+    }
+
 }

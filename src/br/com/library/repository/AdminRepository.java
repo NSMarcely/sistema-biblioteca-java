@@ -10,9 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 import br.com.library.model.Admin;
 import br.com.library.model.interfaces.Exists;
+import br.com.library.model.interfaces.Repository;
 
 
-public class AdminRepository implements Exists  {
+public class AdminRepository implements Exists, Repository  {
 	private final String Adminfile = "admin.txt";
 	private final Map<String, Admin> admins;
 	private static AdminRepository instance;
@@ -36,6 +37,7 @@ public class AdminRepository implements Exists  {
 		return instance;
 	}
 
+	@Override
 	public void read () {
 		File file = new File(this.Adminfile);
 		if(!file.exists()) return;
@@ -57,10 +59,13 @@ public class AdminRepository implements Exists  {
 		
 	}
 	
-	public void write() {
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(this.Adminfile))){
+	@Override
+	public void write () {
+		File file = new File(this.Adminfile);
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
 			for(Admin i : this.admins.values()) {
-				bw.write(i.getName() + ";" + i.getId());
+				bw.write(i.getName() + ";" +
+						i.getId());
 				bw.newLine();
 			}
 		}
