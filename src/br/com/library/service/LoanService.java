@@ -48,6 +48,8 @@ public class LoanService {
 					loan.setReturned(true);
 					this.updateGoal(id);
 					this.loanRepository.write();
+					this.regularUserRepository.write();
+					this.bookRepository.write();
 				}
 				else {
 					System.out.printf("\nO livro não foi emprestado para o usuário '%s'", loan.getId().getName());
