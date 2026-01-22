@@ -65,6 +65,7 @@ public class AdminRepository implements Exists, Repository  {
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
 			for(Admin i : this.admins.values()) {
 				bw.write(i.getName() + ";" +
+						i.getPassword() + ";" +
 						i.getId());
 				bw.newLine();
 			}
@@ -89,9 +90,9 @@ public class AdminRepository implements Exists, Repository  {
 	
 	public void printAdm() {
 		System.out.println(":: Lista de Administradores ::");
-		int accountant = 0;
+		int accountant = 1;
 		for(Admin i : returnAllAdmin()) {
-			System.out.println(accountant + "-" + i);
+			System.out.println(accountant + ":\n" + i);
 			accountant ++;
 		}
 	}

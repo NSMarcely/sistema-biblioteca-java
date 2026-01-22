@@ -46,7 +46,7 @@ public class MainMenu {
 						userInput.nextLine();
 						switch(option2) {
 						case 1 : 
-							System.err.println("<Logar usuário>");
+							System.err.println("\n<Logar usuário>");
 							System.out.println("Nome:");
 							String userName = userInput.nextLine();
 							System.out.println("Senha:");
@@ -55,7 +55,7 @@ public class MainMenu {
 							break;
 							
 						case 2 :
-							System.out.println("<Logar Administrador>");
+							System.out.println("\n<Logar Administrador>");
 							System.out.println("Nome:");
 							String adminName = userInput.nextLine();
 							System.out.println("Senha:");

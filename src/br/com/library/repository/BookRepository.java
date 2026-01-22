@@ -86,10 +86,14 @@ public class BookRepository implements Exists, Repository {
 	}
 	
 	public void printBooks() {
-		System.out.println(":: Listas de livros ::");
-		int accountant = 0;
-		for(Book b: books.values()) {
-			System.out.println(accountant + "-" + b);
+		System.out.println("::Livros do acervo::");
+		if(this.books.isEmpty()) {
+			System.out.println("Ainda não possui livros no sistema");
+			return;
+		}
+		int accountant = 1;
+		for(Book b: this.books.values()) {
+			System.out.println(accountant + ":" + b);
 			accountant ++;
 		}
 	}

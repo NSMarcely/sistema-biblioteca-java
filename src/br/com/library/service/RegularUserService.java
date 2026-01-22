@@ -35,21 +35,30 @@ public class RegularUserService implements Identification, Authenticatable {
 				System.out.println("\n°Meta adiciona com sucesso!");
 				this.readre.write();
 			}
+			else {
+				
+			}
 		}
 		else {
 			System.out.println("\n°Usuário não indentificado");
 		}		
 	}
 	
-	public void viewProfile(String isbn) {
-		if(readre.existence(isbn)){
-			RegularUser user = this.readre.returnRegularUser(isbn);		
-			System.out.println(user.toString());
+	public void viewProfile(String userId) {
+		if(this.readre.existence(userId)){
+			RegularUser regularUser = this.readre.returnRegularUser(userId);		
+			System.out.println(regularUser.toString());
 		}
 		else {
 			System.out.println("\n°Usuário não indentificado");
 		}
 	}
+	
+	public void viewReadingBooks (String userId) {
+		RegularUser regularUser = this.readre.returnRegularUser(userId);
+		regularUser.printReadingBooks(userId);
+	}
+	
 	@Override
 	public void login (String name, String password) {
 		if(this.readre.retunrAllRegularUser().isEmpty()) {

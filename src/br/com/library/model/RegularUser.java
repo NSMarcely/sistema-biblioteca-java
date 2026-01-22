@@ -36,8 +36,17 @@ public class RegularUser extends User {
 		
 	}
 	
-	public void removeReadingBooks (String isbn) {
-		this.readingBooks.remove(isbn);
+	public void printReadingBooks(String userId) {
+		if(readingBooks.isEmpty()) {
+				System.out.printf("\n%s, você não posssui nenhum livro no seu registro", this.getName());
+				return;
+			}
+			else {
+				int accountant = 1;
+				for(Loan loan : allReturnReadingBooks()) {
+					System.out.println(accountant + ":\n" + loan);
+				}
+			}
 	}
 	
 	public float sumDebt () {

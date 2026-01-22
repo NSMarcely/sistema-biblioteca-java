@@ -1,6 +1,5 @@
 package br.com.library.service;
 import java.util.Objects;
-
 import br.com.library.app.AdminMenu;
 import br.com.library.model.Admin;
 import br.com.library.model.interfaces.Authenticatable;

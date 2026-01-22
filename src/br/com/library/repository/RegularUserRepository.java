@@ -123,10 +123,13 @@ public class RegularUserRepository implements Exists, Repository{
 	}
 	
     public void printRegularUser() {
+    	if(this.readers.isEmpty()) {
+    		System.out.println("Ainda não há usários cadrastados");
+    	}
     	System.out.println(":: Lista de Leitores ::");
-    	int accountant = 0;
+    	int accountant = 1;
     	for(RegularUser i : retunrAllRegularUser()) {
-    		System.out.println(accountant + "-" + i);
+    		System.out.println(accountant + ":\n" + i);
     		accountant ++;
     	}
     }

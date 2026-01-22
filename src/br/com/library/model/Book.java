@@ -25,7 +25,7 @@ public class Book{
 	
 	public String  toString() {
 		return String.format("\n-------------------------------------"
-				+ "\nNome: %s\navailable:%s\nAutor:%s\nPaginas:%d\nISBN:%s\nTipo de livro: %s"
+				+ "\nNome: %s\nStatus:%s\nAutor:%s\nPaginas:%d\nISBN:%s\nTipo de livro: %s"
 				+ "\n-------------------------------------",
 				this.bookTitle, getStatusDescription(), this.author, this.page, this.isbn, this.typeBook);
 	}

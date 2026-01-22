@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+
 import br.com.library.model.Book;
 import br.com.library.model.Loan;
 import br.com.library.model.RegularUser;
@@ -44,6 +45,19 @@ public class LoanRepository implements Exists, Repository{
 	}
 	public void remove (String borrowedBook) {
 		this.loans.remove(borrowedBook);
+	}
+	
+	public void printLoan () {
+		System.out.println(":: Livros emprestados ::");
+		if(this.loans.isEmpty()) {
+			System.out.println("Nenhum livro foi emprestado no momemento");
+			return;
+		}
+		int accountant = 1;
+		for(Loan b: this.loans.values()) {
+			System.out.println(accountant + ":\n" + b);
+			accountant ++;
+		}
 	}
 	
 	@Override

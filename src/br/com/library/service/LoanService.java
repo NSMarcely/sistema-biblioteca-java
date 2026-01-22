@@ -23,6 +23,7 @@ public class LoanService {
 					book.setAvailable(false);
 					user.addReadingBooks(loan);		
 					this.loanRepository.write();;
+					System.out.println("°O empréstimo foi feito com sucesso!");
 					}
 				else {
 					System.out.println("°O usuário não foi encontrado");
@@ -49,15 +50,15 @@ public class LoanService {
 					this.loanRepository.write();
 				}
 				else {
-					System.out.printf("O livro não foi emprestado para o usuário '%s'", loan.getId().getName());
+					System.out.printf("\nO livro não foi emprestado para o usuário '%s'", loan.getId().getName());
 				}
 			}
 			else {
-				System.out.println("°O usuário não foi encontrado");
+				System.out.println("\n°O usuário não foi encontrado");
 			}
 		}
 		else {
-			System.out.println("°O ISBN não foi localizado");
+			System.out.println("\n°O ISBN não foi localizado");
 		}
 	}
 	
@@ -71,7 +72,19 @@ public class LoanService {
     			.filter(loan -> !loan.getStartDate().isBefore(user.getGoal().getStartGoal()) )
     	        .count();
     	user.getGoal().setProgress((short) readingBooks);
-    	System.out.printf("As metas do usuário '%s' foi atualiza! ", user.getName());
+    	System.out.printf("\nAs metas do usuário '%s' foi atualiza! ", user.getName());
+    }
+    
+    public void reportLoans () {
+    	this.loanRepository.printLoan();
+    }
+    
+    public void usersReport () {
+    	this.regularUserRepository.printRegularUser();
+    }
+    
+    public void reportBooks () {
+    	this.bookRepository.printBooks();
     }
     
     public void load () {
