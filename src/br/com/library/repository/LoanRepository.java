@@ -63,7 +63,9 @@ public class LoanRepository implements Exists, Repository{
 	@Override
 	public void read () {
 		File file = new File(this.loansFile);
-		if(!file.exists()) return;
+		if(!file.exists()) {
+			return;
+		}
 		try(BufferedReader br = new BufferedReader(new FileReader(file))){
 			String line;
 			while((line = br.readLine()) != null) {
@@ -78,10 +80,8 @@ public class LoanRepository implements Exists, Repository{
 					loan.setEndDate(endDate);
 					loan.setReturned(returned);
 					loan.setStartDate(startDate);
-					id.addReadingBooks(loan);   
-					if(!returned) {
-						this.loans.put(borrowedBook.getIsbn(), loan);
-					}
+					id.getReadingBooks().put(borrowedBook.getIsbn(), loan);
+				    this.loans.put(borrowedBook.getIsbn(), loan);
 				}
  			}
 		}
@@ -96,11 +96,11 @@ public class LoanRepository implements Exists, Repository{
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
 			for(RegularUser regularUser : RegularUserRepository.getInstance().retunrAllRegularUser()) {
 				for(Loan loan : regularUser.allReturnReadingBooks()) {
-					bw.write(loan.getId() + ";" + 
-							loan.getBorrowedBook() + ";" +
+					bw.write(regularUser.getId() + ";" + 
+							loan.getBorrowedBook().getIsbn() + ";" +
 							loan.getStartDate() + ";" +
 							loan.getEndDate() + ";" +
-							loan.getReturnedStatus());
+							loan.isReturned());
 					bw.newLine();
 				}
 			}

@@ -90,7 +90,7 @@ public class LoanService {
     }
     
     public void load () {
-    	this.bookRepository.read();
+    	this.loanRepository.read();
     }
     
 }

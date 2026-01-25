@@ -13,10 +13,10 @@ public class MainMenu {
 	private LoanService loanService = new LoanService();
 	private Scanner userInput = new Scanner(System.in);
 	public void app() {
+		this.regularUserService.load();
 		this.bookService.load();
 		this.adminService.load();
 		this.loanService.load();
-		this.regularUserService.load();
 		boolean finish = false;
 		while(!finish) {
 			System.out.println("\n::Biblioteca::");
