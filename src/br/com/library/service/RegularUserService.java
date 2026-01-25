@@ -32,11 +32,14 @@ public class RegularUserService implements Identification, Authenticatable {
 			RegularUser user = this.readre.returnRegularUser(userId);
 			if(user.getGoal() == null) {
 				user.setGoal(newGoal);
-				System.out.println("\n°Meta adiciona com sucesso!");
+				System.out.println("\n°Meta adicionada com sucesso!");
 				this.readre.write();
 			}
 			else {
-				
+				System.out.println("<Adicionando nova meta>");
+				user.setGoal(newGoal);
+				System.out.println("\n°Nova meta adicionada com sucesso!");
+				this.readre.write();
 			}
 		}
 		else {

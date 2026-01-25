@@ -47,8 +47,17 @@ public class ReadingGoal {
 	public String toString() {
 		LocalDate today = LocalDate.now();
 		long dataMissing = ChronoUnit.DAYS.between(today, this.endGoal);
-		return String.format("\nLivros já lidos: %d | Meta de leitura:%d (faltam %d dias)", this.progress, this.objective, dataMissing);
+		if(dataMissing < 0) {
+			return String.format("\n Sua meta de ler %d livros foi expirada!", this.objective);
+		}
+		else if (this.objective == this.progress) {
+			return "Meta concluida!";
+		}
+		else {
+			return String.format("\nLivros já lidos: %d | Meta de leitura:%d (faltam %d dias)", this.progress, this.objective, dataMissing);
+		}
 	}
+	
 	
 	//Here are the getters and setters methods 
 	public short getObjective() {

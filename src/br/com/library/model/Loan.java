@@ -37,7 +37,7 @@ public class Loan {
 				+ "\nEmpréstimo realizado em:%s"
 				+ "\nData da devolução:%s"
 				+ "\nStatus de devolução:%s"
-				+ "\n-----------------------------------------------",
+				+ "\n-----------------------------------------------\n",
 				this.id.getId(), this.borrowedBook.toString(), 
 				startDate.format(dateFormat), endDate.format(dateFormat), getReturnedStatus()) ;
 	}

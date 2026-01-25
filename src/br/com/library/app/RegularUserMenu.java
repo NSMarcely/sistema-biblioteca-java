@@ -15,7 +15,7 @@ public class RegularUserMenu {
 				System.out.println("\n::BIBLIOFIL::\n");
 				regularUserService.viewProfile(userId);
 				
-				System.out.println("\n|1-Adicionar metas"
+				System.out.println("\n|1-Adicionar nova meta"
 						+ "\n|2-Livros do acervo"
 						+ "\n|3-Atividades"
 						+ "\n|4-Deslogar"
@@ -36,7 +36,7 @@ public class RegularUserMenu {
 					regularUserService.increaseGoal(objective, period, periodTime, userId );
 					}
 					catch (InvalidPeriodException e) {
-						System.out.println("Erro" + e.getMessage());
+						System.out.println("\n°Erro" + e.getMessage());
 					}
 					break;
 					
@@ -49,12 +49,12 @@ public class RegularUserMenu {
 					break;
 					
 				case 4 :
-					System.out.printf("°Tchau, atá a próxima %s!",userName);
+					System.out.printf("\n°Tchau, atá a próxima %s!",userName);
 					finish = true;
 					return;
 					
 				default :
-					System.out.println("°Opção invalida, tente novamente!");
+					System.out.println("\n°Opção invalida, tente novamente!");
 					break;
 				}
 			}

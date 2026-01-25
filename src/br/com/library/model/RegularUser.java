@@ -66,9 +66,11 @@ public class RegularUser extends User {
 	public ReadingGoal getGoal() {
 		return goal;
 	}
+	
 	public float getDebt() {
 		return debt;
 	}
+	
 	public Map<String, Loan> getReadingBooks() {
 		return readingBooks;
 	}
@@ -76,6 +78,7 @@ public class RegularUser extends User {
 	public void setDebt(float debt) {
 		this.debt = debt;
 	}
+	
 	public void setGoal(ReadingGoal goal) {
 		this.goal = goal;
 	}

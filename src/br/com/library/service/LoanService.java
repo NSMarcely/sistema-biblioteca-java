@@ -22,7 +22,9 @@ public class LoanService {
 					this.loanRepository.addLoan(loan);
 					book.setAvailable(false);
 					user.addReadingBooks(loan);		
-					this.loanRepository.write();;
+					this.loanRepository.write();
+					this.regularUserRepository.write();
+					this.bookRepository.write();
 					System.out.println("°O empréstimo foi feito com sucesso!");
 					}
 				else {
@@ -50,6 +52,7 @@ public class LoanService {
 					this.loanRepository.write();
 					this.regularUserRepository.write();
 					this.bookRepository.write();
+					
 				}
 				else {
 					System.out.printf("\nO livro não foi emprestado para o usuário '%s'", loan.getId().getName());
